@@ -17,4 +17,23 @@ const config: Config = {
   },
   plugins: [],
 };
+
+module.exports = {
+  daisyui: {
+    themes: [
+      {
+        dabubble: {
+          "primary": "#444DF2",
+          "secondary": "#535AF1",
+          "accent": "#797EF3",
+          "neutral": "#ffffff",
+          "base-100": "#ECEEFE",
+          "success": "#92C83E",
+          "error": "#ED1E79"
+        }
+      }
+    ]
+  },
+  plugins: [require("daisyui")]
+}
 export default config;
