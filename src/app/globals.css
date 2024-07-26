@@ -7,3 +7,45 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+@layer utilities {
+  .bg-intro {
+    background: linear-gradient(1.46deg, #313AE6 1.22%, #797EF3 98.76%);
+  }
+
+  .center-logo {
+    @apply absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2
+  }
+}
+
+@keyframes slideLogo {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slideText {
+  from {
+    transform: translateX(0);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(10px);
+    opacity: 1;
+  }
+}
+
+.logo-animation {
+  animation: slideLogo 300ms forwards ease-out;
+  animation-delay: 500ms;
+}
+
+.text-animation {
+  animation: slideText 300ms forwards ease-out;
+  animation-delay: 800ms;
+}
