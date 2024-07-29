@@ -1,8 +1,9 @@
+import AuthCard from '@/components/AuthCard'
 import React from 'react'
 
 const SignUp = () => {
     return (
-        <div>SignUp</div>
+        <AuthCard type='sign-up' title='Sign up' />
     )
 }
 
