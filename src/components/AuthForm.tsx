@@ -2,13 +2,18 @@ import React from 'react'
 import CustomInput from './CustomInput'
 
 const AuthForm = ({ type }: { type: string }) => {
+    console.log(type);
+
+
     return (
         <form className='flex flex-col gap-2'>
             {type === 'sign-up' && (
                 <CustomInput label='Name' placeholder='Name' src='/icons/person_filled.svg' type='text' width={16} height={16} />
             )}
             <CustomInput label='Email' placeholder='your@email.com' src='/icons/mail.svg' type='email' width={20} height={16} />
-            <CustomInput label='Password' placeholder='Your password' src='/icons/lock.svg' type='password' width={16} height={21} />
+            {(type === 'sign-up' || type === 'sign-in') && (
+                <CustomInput label='Password' placeholder='Your password' src='/icons/lock.svg' type='password' width={16} height={21} />
+            )}
         </form>
     )
 }

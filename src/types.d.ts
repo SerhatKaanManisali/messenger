@@ -3,7 +3,7 @@ declare type AuthCardProps = {
     title: string,
     description?: string,
     button: string,
-    href: string
+    href?: string
 }
 
 declare type CustomInputProps = {
