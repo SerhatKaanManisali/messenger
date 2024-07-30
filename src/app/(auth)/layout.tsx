@@ -11,7 +11,7 @@ export default function AuthLayout({
             <Intro />
             <header className='flex items-center gap-3'>
                 <Image src='/icons/logo.svg' alt='Logo' width={70} height={70} priority />
-                <h1 className='font-semibold text-4xl'>DABubble</h1>
+                <h1 className='font-semibold text-3xl'>DABubble</h1>
             </header>
             {children}
         </main>

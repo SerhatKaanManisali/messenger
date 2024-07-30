@@ -3,7 +3,7 @@ import React from 'react'
 
 const SignUp = () => {
     return (
-        <AuthCard type='sign-up' title='Sign up' />
+        <AuthCard type='sign-up' title='Sign up' button='Weiter' />
     )
 }
 
