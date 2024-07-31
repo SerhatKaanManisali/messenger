@@ -4,7 +4,7 @@ import React from 'react'
 
 const SignIn = () => {
     return (
-        <section className='flex flex-col items-center gap-6'>
+        <section className='flex flex-col items-center gap-6 mx-4'>
             <AuthCard type='sign-in' title='Sign in' button='Sign in' href='/' />
             <div className='flex flex-col items-center gap-3'>
                 <p>Don't have an account?</p>

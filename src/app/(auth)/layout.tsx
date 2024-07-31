@@ -9,7 +9,7 @@ export default function AuthLayout({
     return (
         <main className='flex flex-col items-center justify-center w-full h-screen gap-6'>
             <Intro />
-            <header className='flex items-center gap-3'>
+            <header className='flex items-center gap-3 mt-4'>
                 <Image src='/icons/logo.svg' alt='Logo' width={70} height={70} priority />
                 <h1 className='font-semibold text-3xl'>DABubble</h1>
             </header>
