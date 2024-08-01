@@ -6,15 +6,42 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
-@layer utilities {
+.slide-out-right {
+  animation: slideOutRight 150ms forwards ease-in-out;
+}
+
+.slide-in-right {
+  animation: slideInRight 150ms forwards ease-in-out;
+}
+
+.slide-in-left {
+  animation: slideInLeft 150ms forwards ease-in-out;
+}
+
+.slide-out-left {
+  animation: slideOutLeft 150ms forwards ease-in-out;
+}
+
+@layer components {
   .bg-intro {
     background: linear-gradient(1.46deg, #313AE6 1.22%, #797EF3 98.76%);
   }
 }
 
-@keyframes slideLogo {
+@keyframes slideInLeft {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutLeft {
   from {
     transform: translateX(0);
   }
@@ -24,22 +51,22 @@
   }
 }
 
-@keyframes slideText {
+@keyframes slideOutRight {
   from {
-    transform: translateX(-50px);
+    transform: translateX(0);
   }
 
   to {
-    transform: translateX(90px);
+    transform: translateX(100%);
   }
 }
 
-.logo-animation {
-  animation: slideLogo 300ms forwards ease-out;
-  animation-delay: 500ms;
-}
+@keyframes slideInRight {
+  from {
+    transform: translateX(-100%);
+  }
 
-.text-animation {
-  animation: slideText 300ms forwards ease-out;
-  animation-delay: 850ms;
+  to {
+    transform: translateX(0);
+  }
 }

@@ -14,3 +14,10 @@ declare type CustomInputProps = {
     width: number,
     height: number
 }
+
+declare type TransitionLinkProps = {
+    children: ReactNode,
+    href: string,
+    direction: string,
+    className: string
+}

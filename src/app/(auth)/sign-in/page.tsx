@@ -1,5 +1,5 @@
 import AuthCard from '@/components/AuthCard'
-import Link from 'next/link'
+import TransitionLink from '@/components/TransitionLink'
 import React from 'react'
 
 const SignIn = () => {
@@ -8,9 +8,9 @@ const SignIn = () => {
             <AuthCard type='sign-in' title='Sign in' button='Sign in' href='/' />
             <div className='flex flex-col items-center gap-3'>
                 <p>Don't have an account?</p>
-                <Link href='/sign-up' className='btn btn-outline btn-accent btn-sm sm:btn sm:btn-outline'>
+                <TransitionLink href='/sign-up' className='btn btn-outline btn-accent btn-sm sm:btn sm:btn-outline' direction='right'>
                     Create account
-                </Link>
+                </TransitionLink>
             </div>
         </section>
     )
