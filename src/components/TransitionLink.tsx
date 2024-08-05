@@ -1,11 +1,15 @@
 'use client'
 
+import { TransitionLinkProps } from '@/lib/types'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import React from 'react'
+import React, { forwardRef, useState } from 'react'
 
-const TransitionLink = ({ children, href, direction, ...props }: TransitionLinkProps) => {
+const TransitionLink = forwardRef<HTMLAnchorElement, TransitionLinkProps>(({ children, href, direction, ...props }, ref) => {
     const router = useRouter();
+
+    const [isAnimating, setIsAnimating] = useState(false);
+
     const waitTransition = async (duration: number): Promise<void> => {
         return new Promise((resolve) => setTimeout(resolve, duration))
     }
@@ -13,6 +17,7 @@ const TransitionLink = ({ children, href, direction, ...props }: TransitionLinkP
     const handleTransition = async (event: React.MouseEvent<HTMLAnchorElement>) => {
         event.preventDefault();
         slideDirection(true);
+        if (isAnimating) return;
         await waitTransition(150);
         router.push(href);
         slideDirection(false);
@@ -22,6 +27,7 @@ const TransitionLink = ({ children, href, direction, ...props }: TransitionLinkP
 
     const slideDirection = (isStarting: boolean) => {
         const body = document.body;
+        setIsAnimating(isStarting);
 
         if (isStarting) {
             if (direction === 'left') {
@@ -38,18 +44,17 @@ const TransitionLink = ({ children, href, direction, ...props }: TransitionLinkP
         }
     }
 
-
     const resetClasses = () => {
         const body = document.body;
-        body?.classList.remove('slide-out-right');
-        body?.classList.remove('slide-in-right');
-        body?.classList.remove('slide-in-left');
-        body?.classList.remove('slide-out-left');
+        body.classList.remove('slide-out-right');
+        body.classList.remove('slide-in-right');
+        body.classList.remove('slide-in-left');
+        body.classList.remove('slide-out-left');
     }
 
     return (
-        <Link onClick={handleTransition} href={href} {...props}>{children}</Link>
+        <Link onClick={handleTransition} href={href} {...props} ref={ref}>{children}</Link>
     )
-}
+});
 
-export default TransitionLink
+export default TransitionLink;

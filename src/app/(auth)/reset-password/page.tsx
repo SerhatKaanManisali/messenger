@@ -3,7 +3,7 @@ import React from 'react'
 
 const ResetPassword = () => {
     return (
-        <AuthCard type='reset-password' title='Reset password' button='Send email' />
+        <AuthCard type='reset-password' title='Reset Password' button='Send Email' />
     )
 }
 

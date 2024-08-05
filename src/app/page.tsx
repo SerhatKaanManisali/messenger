@@ -1,8 +1,13 @@
+
+import { getLoggedInUser } from '@/lib/actions/user.actions';
+import { redirect } from 'next/navigation';
 import React from 'react';
 
-const Home = () => {
+const Home = async () => {
+    const user = await getLoggedInUser();
+    if (!user) redirect('sign-in')
     return (
-        <div>Home</div>
+        <div>{user.name}</div>
     )
 }
 

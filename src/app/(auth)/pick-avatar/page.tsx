@@ -36,7 +36,7 @@ const PickAvatar = () => {
                     <Image src='/icons/arrow-back.svg' alt='Arrow back' width={15} height={15} className='cursor-pointer' />
                 </TransitionLink>
 
-                <h2 className='card-title text-primary text-3xl text-center !mb-0 max-w-40 overflow-visible'>
+                <h2 className='card-title text-primary text-3xl text-center !mb-0 max-w-40'>
                     Pick your avatar
                 </h2>
 
@@ -46,7 +46,7 @@ const PickAvatar = () => {
                     </div>
                 </div>
 
-                <h2 className='font-bold text-3xl overflow-visible'>
+                <h2 className='font-bold text-3xl'>
                     {userName}
                 </h2>
 
@@ -59,7 +59,7 @@ const PickAvatar = () => {
                         </div>
                     ))}
                 </div>
-                <div className="divider my-1 overflow-visible">OR</div>
+                <div className="divider my-1">OR</div>
                 <div className='flex gap-4'>
 
                     <input type="file" ref={fileInputRef} onChange={handleFileChange} className='hidden' />
