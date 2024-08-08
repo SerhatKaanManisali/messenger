@@ -1,3 +1,6 @@
+'use client'
+
+import { useEffect } from 'react';
 import * as Yup from 'yup'
 
 export const authFormSchema = (type: string) => {
@@ -47,3 +50,23 @@ export const authFormSchema = (type: string) => {
 }
 
 export const parseStringify = (value: any) => JSON.parse(JSON.stringify(value));
+
+export const usePrefetchLinks = () => {
+    useEffect(() => {
+        const links = document.querySelectorAll('a[data-prefetch]');
+        const prefetchLinks: HTMLLinkElement[] = [];
+
+        links.forEach((link) => {
+            const url = link.getAttribute('href');
+            if (url) {
+                const prefetchLink = document.createElement('link');
+                prefetchLink.rel = 'prefetch';
+                prefetchLink.href = url;
+                document.head.appendChild(prefetchLink);
+                prefetchLinks.push(prefetchLink);
+            }
+        });
+
+        return () => prefetchLinks.forEach((link) => document.head.removeChild(link));
+    }, []);
+};

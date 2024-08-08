@@ -1,18 +1,18 @@
 'use client'
 
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import CustomInput from './CustomInput'
 import { useFormik } from 'formik'
 import TransitionLink from './TransitionLink'
-import { authFormSchema } from '@/lib/utils'
+import { authFormSchema, usePrefetchLinks } from '@/lib/utils'
 import { signIn, signUp } from '@/lib/actions/user.actions'
-import { useRouter } from 'next/navigation'
-
 
 const AuthForm = ({ type, href, button }: { type: string, href: string, button: string }) => {
     const [isLoading, setIsLoading] = useState(false);
     const transitionLinkRef = useRef<HTMLAnchorElement | null>(null);
     const validationSchema = authFormSchema(type);
+    usePrefetchLinks();
+
     const formik = useFormik({
         initialValues: {
             name: '',
@@ -29,10 +29,8 @@ const AuthForm = ({ type, href, button }: { type: string, href: string, button: 
                     await signIn(userData);
                 }
                 if (transitionLinkRef.current) transitionLinkRef.current.click();
-
             } catch (error) {
                 console.error(error);
-
             }
         }
     });
@@ -50,7 +48,7 @@ const AuthForm = ({ type, href, button }: { type: string, href: string, button: 
             )}
 
             {type === 'sign-in' && (
-                <TransitionLink href='/reset-password' className='text-accent text-base mt-3 py-1 px-4 rounded-3xl transition-all hover:bg-base-100 hover:text-primary hover:font-medium' direction='right'>
+                <TransitionLink href='/reset-password' className='text-accent text-base mt-3 py-1 px-4 rounded-3xl transition-all hover:bg-base-100 hover:text-primary hover:font-medium' direction='right' data-prefetch>
                     Forgot password?
                 </TransitionLink>
             )}
@@ -60,10 +58,8 @@ const AuthForm = ({ type, href, button }: { type: string, href: string, button: 
                 {isLoading ? 'Loading...' : button}
             </button>
 
-            <TransitionLink href={href || '#'} className='hidden' direction='right' ref={transitionLinkRef}></TransitionLink>
-
+            <TransitionLink href={href || '#'} className='hidden' direction='right' ref={transitionLinkRef} data-prefetch />
         </form>
-
     )
 }
 export default AuthForm
